@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 
 export default async function NYTSpellingBeePage() {
   const url = "https://aspellingbee-rwa5zgenkq-uc.a.run.app";
-  const response = await fetch(url);
+  const response = await fetch(url, { next: { revalidate: 120 } });
   const data = await response.json();
   return (
     <main className="flex min-h-screen flex-col items-center p-24 bg-[rgb(247,218,33)]">

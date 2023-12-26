@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 
 export default async function NYTConnectionsPage() {
   const url = "https://aconnections-rwa5zgenkq-uc.a.run.app";
-  const response = await fetch(url);
+  const response = await fetch(url, { next: { revalidate: 120 } });
   const data = await response.json();
 
   return (

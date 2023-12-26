@@ -19,7 +19,7 @@ const getToday = () => {
 export default async function NYTWordlePage() {
   const { dateString } = getToday();
   const url = `https://www.nytimes.com/svc/wordle/v2/${dateString}.json`;
-  const response = await fetch(url);
+  const response = await fetch(url, { next: { revalidate: 120 } });
   const data = await response.json();
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-[#e3e3e1]">
