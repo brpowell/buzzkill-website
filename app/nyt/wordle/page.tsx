@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Wordle",
+};
+
 const getToday = () => {
   const todaysDate = new Date();
   const estDate = new Date(

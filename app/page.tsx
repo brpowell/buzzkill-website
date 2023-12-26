@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Metadata } from "next";
 
 const games = [
   {
@@ -27,6 +28,11 @@ const games = [
     color: "game-wordle",
   },
 ];
+
+export const metadata: Metadata = {
+  title: "Buzzkill.tips",
+  description: "Get answers to your favorite games",
+};
 
 export default function Home() {
   return (

@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Spelling Bee",
+};
+
 export default async function NYTSpellingBeePage() {
   const url = "https://aspellingbee-rwa5zgenkq-uc.a.run.app";
   const response = await fetch(url);

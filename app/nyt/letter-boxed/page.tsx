@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Letter Boxed",
+};
+
 export default async function NYTLetterBoxedPage() {
   const url = "https://aletterboxed-rwa5zgenkq-uc.a.run.app";
   const response = await fetch(url);

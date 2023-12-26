@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Connections",
+};
+
 export default async function NYTConnectionsPage() {
   const url = "https://aconnections-rwa5zgenkq-uc.a.run.app";
   const response = await fetch(url);

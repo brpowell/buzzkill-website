@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Slabo_27px } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 const slabo = Slabo_27px({ weight: "400", subsets: ["latin"] });
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={slabo.className}>{children}</body>
+      <Analytics />
     </html>
   );
 }
