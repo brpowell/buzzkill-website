@@ -17,7 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={slabo.className}>{children}</body>
+      <body className={slabo.className}>
+        <div className="flex min-h-screen justify-between flex-col">
+          {children}
+        </div>
+      </body>
       <Analytics />
     </html>
   );
