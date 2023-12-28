@@ -10,7 +10,6 @@ export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
-  // Close the sidebar if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -28,16 +27,26 @@ export default function Sidebar() {
   useEffect(() => {
     const body = document.body;
 
-    // Disable scroll on the body when the sidebar is open
     if (isOpen) {
       const originalStyle = body.style.overflow;
       body.style.overflow = "hidden";
 
       return () => {
-        body.style.overflow = originalStyle; // Re-enable scroll when the component is unmounted or the sidebar is closed
+        body.style.overflow = originalStyle;
       };
     }
-  }, [isOpen]); // Only re-run the effect if isOpen changes
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (isOpen && event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => document.removeEventListener("keydown", handleEscapeKey);
+  }, [isOpen]);
 
   return (
     <div ref={sidebarRef} className="px-4 pt-4">
@@ -62,7 +71,11 @@ export default function Sidebar() {
       >
         {/* Content for your sidebar */}
         <nav>
-          <Link href="/" className="block pr-4 py-4 pl-2 text-2xl">
+          <Link
+            href="/"
+            className="block pr-4 py-4 pl-2 text-2xl"
+            tabIndex={isOpen ? 0 : -1}
+          >
             buzzkill.tips
           </Link>
           <div className="text-md pl-2 pt-2">Games</div>
@@ -72,6 +85,7 @@ export default function Sidebar() {
               <Link
                 key={game.path}
                 href={game.path}
+                tabIndex={isOpen ? 0 : -1}
                 className="flex flex-row hover:bg-gray-700 p-4 items-center gap-3"
                 onClick={() => setIsOpen(false)}
               >
