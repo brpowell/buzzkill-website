@@ -40,10 +40,10 @@ export default function Sidebar() {
   }, [isOpen]); // Only re-run the effect if isOpen changes
 
   return (
-    <div ref={sidebarRef} className="p-4">
+    <div ref={sidebarRef} className="px-4 pt-4">
       {/* Button to toggle sidebar */}
       <button onClick={() => setIsOpen(!isOpen)}>
-        <Bars3Icon className="h-6 w-6 text-gray-800" />
+        <Bars3Icon className="h-8 w-8 text-gray-800" />
       </button>
 
       {/* Overlay with transition classes */}
@@ -62,7 +62,9 @@ export default function Sidebar() {
       >
         {/* Content for your sidebar */}
         <nav>
-          <div className="pr-4 py-4 pl-2 text-2xl">buzzkill.tips</div>
+          <Link href="/" className="block pr-4 py-4 pl-2 text-2xl">
+            buzzkill.tips
+          </Link>
           <div className="text-md pl-2 pt-2">Games</div>
           {/* Links or content goes here */}
           {games.map((game) => {

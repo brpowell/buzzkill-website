@@ -8,9 +8,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div>
       <Sidebar />
-      <div className="flex min-h-screen flex-col p-14 items-center">
-        {children}
-      </div>
+      <div className="flex min-h-screen flex-col items-center">{children}</div>
     </div>
   );
 }
