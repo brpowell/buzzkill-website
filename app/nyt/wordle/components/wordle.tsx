@@ -31,7 +31,7 @@ export default function Wordle({ word }: WordleProps) {
                 isRevealed
                   ? "bg-green-600 text-white [transform:rotateX(360deg)]"
                   : ""
-              } p-2 w-14 h-14 flex justify-center items-center text-3xl font-bold border-2 border-slate-300 transition-all cursor-pointer [transform-style:preserve-3d]`}
+              } p-2 w-14 h-14 flex justify-center items-center text-3xl font-bold border-2 border-slate-300 transition-all duration-500 cursor-pointer [transform-style:preserve-3d]`}
               onClick={() =>
                 setRevealed({
                   ...revealed,

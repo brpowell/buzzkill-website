@@ -10,9 +10,9 @@ export const getTodayEST = () => {
   return todaysDate;
 };
 
-export const longDateString = (dateString: string) => {
+export const longDateString = (date: string | Date) => {
   // Modify the input date string to include a time portion (00:00) to avoid time zone adjustments
-  const date = new Date(dateString + "T00:00");
+  const nextDate = typeof date === "string" ? new Date(date + "T00:00") : date;
 
   // Array of day names and month names
   const days = [
@@ -40,10 +40,10 @@ export const longDateString = (dateString: string) => {
   ];
 
   // Extracting the parts of the date
-  const dayOfWeek = days[date.getDay()];
-  const month = months[date.getMonth()];
-  const day = date.getDate();
-  const year = date.getFullYear();
+  const dayOfWeek = days[nextDate.getDay()];
+  const month = months[nextDate.getMonth()];
+  const day = nextDate.getDate();
+  const year = nextDate.getFullYear();
 
   // Formatting the date into the desired format
   return `${dayOfWeek}, ${month} ${day}, ${year}`;

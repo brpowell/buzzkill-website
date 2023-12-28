@@ -1,34 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
-
-const games = [
-  {
-    name: "Spelling Bee",
-    path: "/nyt/spelling-bee",
-    icon: "/game-icons/spelling-bee-icon.svg",
-    color: "game-spelling-bee",
-  },
-  {
-    name: "Wordle",
-    path: "/nyt/wordle",
-    icon: "/game-icons/wordle-icon.svg",
-    color: "game-wordle",
-    iconSize: 23,
-  },
-  {
-    name: "Connections",
-    path: "/nyt/connections",
-    icon: "/game-icons/connections-icon.svg",
-    color: "game-connections",
-  },
-  {
-    name: "Letter Boxed",
-    path: "/nyt/letter-boxed",
-    icon: "/game-icons/letter-boxed-icon.svg",
-    color: "game-letter-boxed",
-  },
-];
+import { games } from "@/lib/games";
 
 export const metadata: Metadata = {
   title: "Buzzkill.tips",
@@ -38,7 +11,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="flex min-h-screen justify-between flex-col">
-      <div className="flex flex-col items-center pt-12 sm:p-24">
+      <div className="flex flex-col items-center pt-16 sm:p-24">
         <h1 className="text-6xl mb-4">Buzzkill.tips</h1>
         <h3 className="text-2xl mb-12 italic text-gray-500">Just tell me</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
@@ -64,7 +37,7 @@ export default function Home() {
         </div>
       </div>
       <footer className="flex justify-center py-6 text-gray-500">
-        Made out of playful spite
+        <div>Made out of playful spite. Mind the construction 🚧</div>
       </footer>
     </main>
   );
