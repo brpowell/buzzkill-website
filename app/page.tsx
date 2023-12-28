@@ -10,6 +10,13 @@ const games = [
     color: "game-spelling-bee",
   },
   {
+    name: "Wordle",
+    path: "/nyt/wordle",
+    icon: "/game-icons/wordle-icon.svg",
+    color: "game-wordle",
+    iconSize: 23,
+  },
+  {
     name: "Connections",
     path: "/nyt/connections",
     icon: "/game-icons/connections-icon.svg",
@@ -20,13 +27,6 @@ const games = [
     path: "/nyt/letter-boxed",
     icon: "/game-icons/letter-boxed-icon.svg",
     color: "game-letter-boxed",
-  },
-  {
-    name: "Wordle",
-    path: "/nyt/wordle",
-    icon: "/game-icons/wordle-icon.svg",
-    color: "game-wordle",
-    iconSize: 23,
   },
 ];
 
