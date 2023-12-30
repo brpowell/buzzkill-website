@@ -61,5 +61,5 @@ export interface GameData
 export interface GameConfig<T extends keyof GameData> {
   path: string;
   collection: T;
-  parse: (data: GameDataResponse[T], page: Page) => Promise<any>;
+  parse: (data: GameDataResponse[T], page: Page) => Promise<any> | any;
 }
