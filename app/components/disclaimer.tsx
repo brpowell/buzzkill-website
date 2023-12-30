@@ -7,7 +7,7 @@ export default function Disclaimer() {
 
   return (
     <footer className="flex flex-col items-center text-center text-sm mt-20 mb-8">
-      <div className={`px-60 ${textColor} mix-blend-difference`}>
+      <div className={`px-10 md:px-40 ${textColor} mix-blend-difference`}>
         The games and their respective icons featured herein are the exclusive
         property of{" "}
         <span>
