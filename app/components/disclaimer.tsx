@@ -17,6 +17,11 @@ export default function Disclaimer() {
         </span>{" "}
         Buzzkill.tips is an independent entity and is not affiliated with,
         endorsed by, or in any way officially connected to The New York Times.
+        Additional icons by{" "}
+        <Link href="https://icons8.com/" className="text-blue-600">
+          Icons8
+        </Link>
+        .
       </div>
     </footer>
   );

@@ -20,7 +20,9 @@ export default function Home() {
     <main className="flex flex-col">
       <div className="flex flex-col items-center pt-16 sm:p-24">
         <h1 className="text-6xl mb-4">Buzzkill.tips</h1>
-        <h3 className="text-2xl mb-12 italic text-gray-500">Just tell me</h3>
+        <h3 className="text-2xl mb-12 italic text-gray-500">
+          Just tell me <span className="not-italic ml-1">{""}🫠</span>
+        </h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
           {games.map((game) => {
             return (
