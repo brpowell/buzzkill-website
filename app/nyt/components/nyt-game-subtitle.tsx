@@ -12,7 +12,7 @@ export default function NYTGameSubtitle({
   return (
     <>
       <h2 className="text-2xl mb-2">{longDateString(date)}</h2>
-      {editor && <h3 className="text-slate-500">{`By ${editor}`}</h3>}
+      {editor && <h3 className="font-bold">{`By ${editor}`}</h3>}
     </>
   );
 }

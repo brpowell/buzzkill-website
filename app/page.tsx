@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen justify-between flex-col">
+    <main className="flex flex-col">
       <div className="flex flex-col items-center pt-16 sm:p-24">
         <h1 className="text-6xl mb-4">Buzzkill.tips</h1>
         <h3 className="text-2xl mb-12 italic text-gray-500">Just tell me</h3>
@@ -25,9 +25,9 @@ export default function Home() {
                     priority
                     src={game.icon}
                     alt={game.name}
-                    width={game.iconSize ?? 34}
-                    height={game.iconSize ?? 34}
-                    className={game.name === "Wordle" ? "mr-2" : ""}
+                    width={28}
+                    height={28}
+                    className="mr-1"
                   />
                   <div className="text-left w-full">{game.name}</div>
                 </div>
@@ -36,7 +36,7 @@ export default function Home() {
           })}
         </div>
       </div>
-      <footer className="flex justify-center py-6 text-gray-500">
+      <footer className="flex justify-center py-6 mt-12 text-gray-500">
         <div>Made out of playful spite. Mind the construction 🚧</div>
       </footer>
     </main>

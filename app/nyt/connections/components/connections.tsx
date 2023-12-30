@@ -67,7 +67,7 @@ export default function Connections({ data }: ConnectionsProps) {
   );
 
   return (
-    <div className="flex flex-col gap-3 min-w-96">
+    <div className="flex flex-col gap-3">
       {groups.map((group) => {
         return (
           <button

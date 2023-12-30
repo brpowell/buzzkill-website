@@ -93,9 +93,8 @@ export default function Sidebar() {
                   priority
                   src={game.icon}
                   alt={game.name}
-                  width={game.iconSize ?? 34}
-                  height={game.iconSize ?? 34}
-                  className={game.name === "Wordle" ? "mr-2" : ""}
+                  width={28}
+                  height={28}
                 />
                 <div className="block text-white">{game.name}</div>
               </Link>
