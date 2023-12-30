@@ -18,8 +18,8 @@ export default function Wordle({ word }: WordleProps) {
   const allRevealed = letterState.every((entry) => entry.isRevealed);
 
   return (
-    <div className="text-center">
-      <div className="flex flex-row gap-2">
+    <div>
+      <div className="flex flex-row gap-2 text-center">
         {letterState.map(({ letter, isRevealed }, outerI) => {
           return (
             <button
@@ -50,7 +50,7 @@ export default function Wordle({ word }: WordleProps) {
       </div>
       {!allRevealed && (
         <button
-          className="bg- text-white p-2 mt-4 bg-green-600"
+          className="text-white p-2 mt-4 bg-green-600"
           onClick={() =>
             setLetterState(
               letterState.map((entry) => {

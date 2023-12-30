@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Slabo_27px } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
+import Disclaimer from "./components/disclaimer";
 
 const slabo = Slabo_27px({ weight: "400", subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={slabo.className}>
         <div className="flex justify-between flex-col">{children}</div>
+        <Disclaimer />
       </body>
       <Analytics />
     </html>

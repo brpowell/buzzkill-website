@@ -36,9 +36,9 @@ export default function Home() {
           })}
         </div>
       </div>
-      <footer className="flex justify-center py-6 mt-12 text-gray-500">
+      <div className="flex justify-center py-6 mt-12 text-gray-500">
         <div>Made out of playful spite. Mind the construction 🚧</div>
-      </footer>
+      </div>
     </main>
   );
 }

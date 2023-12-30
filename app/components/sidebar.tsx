@@ -67,7 +67,7 @@ export default function Sidebar() {
       <div
         className={`absolute top-0 left-0 z-30 w-64 h-full bg-gray-800 text-white transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out`}
+        } transition-transform duration-300 ease-in-out justify-between flex flex-col p-2`}
       >
         {/* Content for your sidebar */}
         <nav>
