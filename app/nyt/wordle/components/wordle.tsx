@@ -7,23 +7,20 @@ export interface WordleProps {
 }
 
 export default function Wordle({ word }: WordleProps) {
-  const letters = word.split("").map((letter) => letter.toUpperCase());
-
-  const [revealed, setRevealed] = useState<{ [letter: string]: boolean }>(
-    letters.reduce((acc, key) => {
-      return {
-        ...acc,
-        [key]: false,
-      };
-    }, {})
+  const [letterState, setLetterState] = useState<
+    Array<{ letter: string; isRevealed: boolean }>
+  >(
+    word
+      .split("")
+      .map((letter) => ({ letter: letter.toUpperCase(), isRevealed: false }))
   );
 
-  const allRevealed = Object.values(revealed).every((isRevealed) => isRevealed);
+  const allRevealed = letterState.every((entry) => entry.isRevealed);
 
   return (
     <div className="text-center">
       <div className="flex flex-row gap-2">
-        {Object.entries(revealed).map(([letter, isRevealed]) => {
+        {letterState.map(({ letter, isRevealed }, outerI) => {
           return (
             <button
               key={letter}
@@ -33,10 +30,17 @@ export default function Wordle({ word }: WordleProps) {
                   : ""
               } p-2 w-14 h-14 flex justify-center items-center text-3xl font-bold border-2 border-slate-300 transition-all duration-500 cursor-pointer [transform-style:preserve-3d]`}
               onClick={() =>
-                setRevealed({
-                  ...revealed,
-                  [letter]: true,
-                })
+                setLetterState(
+                  letterState.map((entry, innerI) => {
+                    if (outerI === innerI) {
+                      return {
+                        ...entry,
+                        isRevealed: true,
+                      };
+                    }
+                    return entry;
+                  })
+                )
               }
             >
               {isRevealed ? letter : "?"}
@@ -48,13 +52,13 @@ export default function Wordle({ word }: WordleProps) {
         <button
           className="bg- text-white p-2 mt-4 bg-green-600"
           onClick={() =>
-            setRevealed(
-              letters.reduce((acc, key) => {
+            setLetterState(
+              letterState.map((entry) => {
                 return {
-                  ...acc,
-                  [key]: true,
+                  ...entry,
+                  isRevealed: true,
                 };
-              }, {})
+              })
             )
           }
         >

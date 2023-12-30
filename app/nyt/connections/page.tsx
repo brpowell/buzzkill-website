@@ -2,8 +2,8 @@ import { getLatestData } from "@/lib/nyt";
 import { Metadata } from "next";
 import DynamicBody from "../components/dynamic-body";
 import NYTGameTitle from "../components/nyt-game-title";
-import NYTGameSubtitle from "../components/nyt-game-subtitle";
 import NYTButton from "../components/nyt-button";
+import Connections from "./components/connections";
 
 export const metadata: Metadata = {
   title: "Connections",
@@ -18,15 +18,7 @@ export default async function NYTConnectionsPage() {
       <NYTGameTitle title="Connections" />
       {data ? (
         <>
-          {Object.entries(data.groups).map(([key, value]) => {
-            return (
-              <div key={key} className="flex flex-row gap-2">
-                {value.members.map((member) => {
-                  return <div key={member}>{member}</div>;
-                })}
-              </div>
-            );
-          })}
+          <Connections data={data} />
         </>
       ) : (
         <div>{"Weird, we couldn't find any data. Check back later..."}</div>

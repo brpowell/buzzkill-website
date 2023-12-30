@@ -53,6 +53,9 @@ export const getLatestData = async <T extends keyof GameData>(
     .limit(1)
     .get();
   if (result.docs.length > 0) {
-    return result.docs[0].data() as GameData[T];
+    return {
+      ...result.docs[0].data(),
+      addedAt: result.docs[0].get("addedAt").toDate().toISOString(),
+    } as GameData[T];
   }
 };
