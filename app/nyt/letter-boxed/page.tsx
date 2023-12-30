@@ -4,10 +4,12 @@ import DynamicBody from "../components/dynamic-body";
 import NYTGameTitle from "../components/nyt-game-title";
 import NYTGameSubtitle from "../components/nyt-game-subtitle";
 import NYTButton from "../components/nyt-button";
+import { metadataForGamePage } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Letter Boxed",
-};
+export const metadata: Metadata = metadataForGamePage(
+  "Letter Boxed",
+  "Get some help with today's NYT Letter Boxed."
+);
 
 export default async function NYTLetterBoxedPage() {
   const data = await getLatestData("letter-boxed");

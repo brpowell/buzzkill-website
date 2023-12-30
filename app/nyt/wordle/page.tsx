@@ -3,13 +3,14 @@ import { Metadata } from "next";
 import DynamicBody from "../components/dynamic-body";
 import NYTButton from "../components/nyt-button";
 import Wordle from "./components/wordle";
-import { longDateString } from "@/lib/date";
 import NYTGameTitle from "../components/nyt-game-title";
 import NYTGameSubtitle from "../components/nyt-game-subtitle";
+import { metadataForGamePage } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Wordle",
-};
+export const metadata: Metadata = metadataForGamePage(
+  "Wordle",
+  "Get some help with today's Wordle."
+);
 
 export default async function NYTWordlePage() {
   const data = await getLatestData("wordle");

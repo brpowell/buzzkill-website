@@ -4,12 +4,13 @@ import DynamicBody from "../components/dynamic-body";
 import NYTGameTitle from "../components/nyt-game-title";
 import NYTButton from "../components/nyt-button";
 import Connections from "./components/connections";
-import { longDateString } from "@/lib/date";
 import NYTGameSubtitle from "../components/nyt-game-subtitle";
+import { metadataForGamePage } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Connections",
-};
+export const metadata: Metadata = metadataForGamePage(
+  "Connections",
+  "Get some help with today's NYT Connections."
+);
 
 export default async function NYTConnectionsPage() {
   const data = await getLatestData("connections");

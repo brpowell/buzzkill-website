@@ -5,7 +5,14 @@ import { games } from "@/lib/games";
 
 export const metadata: Metadata = {
   title: "Buzzkill.tips",
-  description: "Get answers to your favorite games",
+  description:
+    "Get answers to your favorite New York Times games and puzzles for when you're truly stuck.",
+  openGraph: {
+    title: "Buzzkill.tips",
+    siteName: "Buzzkill.tips",
+    description:
+      "Get answers to your favorite New York Times games and puzzles for when you're truly stuck.",
+  },
 };
 
 export default function Home() {

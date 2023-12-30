@@ -4,10 +4,12 @@ import { getLatestData } from "@/lib/nyt";
 import DynamicBody from "../components/dynamic-body";
 import NYTGameSubtitle from "../components/nyt-game-subtitle";
 import NYTGameTitle from "../components/nyt-game-title";
+import { metadataForGamePage } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Spelling Bee",
-};
+export const metadata: Metadata = metadataForGamePage(
+  "Spelling Bee",
+  "Get some help with today's NYT Spelling Bee."
+);
 
 export default async function NYTSpellingBeePage() {
   const data = await getLatestData("spelling-bee");
