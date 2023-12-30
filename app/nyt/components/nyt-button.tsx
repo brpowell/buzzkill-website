@@ -10,9 +10,9 @@ export default function NYTButton({ path }: NYTButtonProps) {
   return (
     <Link
       href={url}
-      className="text-lg my-8 bg-white px-4 py-3 rounded-sm flex gap-3 max-w-fit"
+      className="text-lg my-8 bg-white px-3 py-2 rounded-sm flex gap-3 max-w-fit"
     >
-      <Image src={"/nyt.svg"} alt="Play on NYT" width={20} height={20} />
+      <Image src={"/nyt.svg"} alt="Play on NYT" width={16} height={16} />
       Play on NYT
     </Link>
   );

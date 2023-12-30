@@ -4,6 +4,8 @@ import DynamicBody from "../components/dynamic-body";
 import NYTGameTitle from "../components/nyt-game-title";
 import NYTButton from "../components/nyt-button";
 import Connections from "./components/connections";
+import { longDateString } from "@/lib/date";
+import NYTGameSubtitle from "../components/nyt-game-subtitle";
 
 export const metadata: Metadata = {
   title: "Connections",
@@ -16,16 +18,22 @@ export default async function NYTConnectionsPage() {
     <main className="bg-[rgb(179,167,254)]">
       <DynamicBody className="bg-[rgb(179,167,254)]" />
       <NYTGameTitle title="Connections" />
+      {/* <div className="flex justify-center">
+      </div> */}
       {data ? (
         <>
+          <NYTGameSubtitle date={data.addedAt} editor={data.editor} />
+          <p className="my-8">
+            {
+              "Click a group to reveal the group name. Click again to reveal the words."
+            }
+          </p>
           <Connections data={data} />
         </>
       ) : (
         <div>{"Weird, we couldn't find any data. Check back later..."}</div>
       )}
-      <div className="flex justify-center">
-        <NYTButton path="/games/connections" />
-      </div>
+      <NYTButton path="/games/connections" />
     </main>
   );
 }

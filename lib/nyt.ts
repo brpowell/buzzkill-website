@@ -26,7 +26,7 @@ export const getGameData = async <T extends keyof Omit<GameData, "wordle">>(
     ? puppeteer.connect({
         browserWSEndpoint: `wss://chrome.browserless.io?token=${browserlessToken}`,
       })
-    : puppeteer.launch());
+    : puppeteer.launch({ headless: "new" }));
   const page = await browser.newPage();
   await page.goto(url);
   const results = await page.evaluate(() => {
@@ -34,7 +34,7 @@ export const getGameData = async <T extends keyof Omit<GameData, "wordle">>(
   });
 
   const keyData = {
-    ...config.parse(results),
+    ...(await config.parse(results, page)),
     addedAt: firebase.firestore.FieldValue.serverTimestamp(),
   };
 

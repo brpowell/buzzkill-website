@@ -29,9 +29,7 @@ export default async function NYTLetterBoxedPage() {
       ) : (
         <div>{"Weird, we couldn't find any data. Check back later..."}</div>
       )}
-      <div className="flex justify-center">
-        <NYTButton path="/puzzles/letter-boxed" />
-      </div>
+      <NYTButton path="/puzzles/letter-boxed" />
     </main>
   );
 }

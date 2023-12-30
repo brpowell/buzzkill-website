@@ -12,7 +12,14 @@ export const getTodayEST = () => {
 
 export const longDateString = (date: string | Date) => {
   // Modify the input date string to include a time portion (00:00) to avoid time zone adjustments
-  const nextDate = typeof date === "string" ? new Date(date + "T00:00") : date;
+  if (typeof date === "string") {
+    if (!date.includes("T")) {
+      date = date + "T00:00";
+    } else {
+      date = date.split("T")[0] + "T00:00";
+    }
+  }
+  const nextDate = typeof date === "string" ? new Date(date) : date;
 
   // Array of day names and month names
   const days = [

@@ -1,3 +1,9 @@
+import { Page } from "puppeteer";
+
+interface BaseGameData {
+  addedAt: string;
+}
+
 export interface SpellingBeeGameData {
   id: number;
   printDate: string;
@@ -8,7 +14,7 @@ export interface SpellingBeeGameData {
   displayWeekday: string;
 }
 
-export interface ConnectionsGameData {
+export interface ConnectionsGameData extends BaseGameData {
   id: number;
   groups: {
     [name: string]: {
@@ -17,6 +23,7 @@ export interface ConnectionsGameData {
     };
   };
   startingGroups: string[][];
+  editor?: string;
 }
 
 export interface LetterBoxedGameData {
@@ -29,12 +36,11 @@ export interface LetterBoxedGameData {
   editor: string;
 }
 
-export interface WordleGameData {
+export interface WordleGameData extends BaseGameData {
   solution: string;
   editor: string;
   id: number;
   print_date: string;
-  addedAt: string;
 }
 
 export interface GameDataResponse {
@@ -55,5 +61,5 @@ export interface GameData
 export interface GameConfig<T extends keyof GameData> {
   path: string;
   collection: T;
-  parse: (data: GameDataResponse[T]) => any;
+  parse: (data: GameDataResponse[T], page: Page) => Promise<any>;
 }

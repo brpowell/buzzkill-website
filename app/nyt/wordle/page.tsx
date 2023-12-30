@@ -25,13 +25,11 @@ export default async function NYTWordlePage() {
           <div className="mb-10">
             <Wordle word={data.solution} />
           </div>
-          <div className="flex justify-center">
-            <NYTButton path="/games/wordle" />
-          </div>
         </>
       ) : (
         <div>{"Weird, we couldn't find any data. Check back later..."}</div>
       )}
+      <NYTButton path="/games/wordle" />
     </main>
   );
 }
