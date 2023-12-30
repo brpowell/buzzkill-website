@@ -3,15 +3,16 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { games } from "@/lib/games";
 
+const description =
+  "Discover solutions for New York Times games and puzzles. Get unstuck and enjoy your gameplay more!";
+
 export const metadata: Metadata = {
-  title: "Buzzkill.tips",
-  description:
-    "Get answers to your favorite New York Times games and puzzles for when you're truly stuck.",
+  title: "Buzzkill.tips - NYT Games & Puzzles Solutions",
+  description,
   openGraph: {
-    title: "Buzzkill.tips",
+    title: "Buzzkill.tips: Answers to NYT Games & Puzzles.",
     siteName: "Buzzkill.tips",
-    description:
-      "Get answers to your favorite New York Times games and puzzles for when you're truly stuck.",
+    description,
   },
 };
 
@@ -46,7 +47,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex justify-center py-6 mt-12 text-gray-500">
-        <div>Made out of playful spite. Mind the construction 🚧</div>
+        <div>Made out of playful spite.</div>
       </div>
     </main>
   );
