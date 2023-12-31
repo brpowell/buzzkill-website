@@ -6,11 +6,14 @@ import Wordle from "./components/wordle";
 import NYTGameTitle from "../components/nyt-game-title";
 import NYTGameSubtitle from "../components/nyt-game-subtitle";
 import { metadataForGamePage } from "@/lib/metadata";
+import { GAME_DATA_TTL } from "@/lib/constants";
 
 export const metadata: Metadata = metadataForGamePage(
   "Wordle",
   "Get some help with today's Wordle."
 );
+
+export const revalidate = GAME_DATA_TTL;
 
 export default async function NYTWordlePage() {
   const data = await getLatestData("wordle");

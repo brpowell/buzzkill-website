@@ -76,7 +76,7 @@ export default function Sidebar() {
             className="block pr-4 py-4 pl-2 text-2xl"
             tabIndex={isOpen ? 0 : -1}
           >
-            buzzkill.tips
+            Buzzkill.tips
           </Link>
           <div className="text-md pl-2 pt-2">Games</div>
           {/* Links or content goes here */}

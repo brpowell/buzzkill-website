@@ -1,3 +1,4 @@
+import { cache } from "react";
 import puppeteer, { ConnectOptions } from "puppeteer";
 import * as firebase from "firebase-admin";
 import { db } from "./firebase";
@@ -44,18 +45,21 @@ export const getGameData = async <T extends keyof Omit<GameData, "wordle">>(
   return keyData;
 };
 
-export const getLatestData = async <T extends keyof GameData>(
-  collection: T
-): Promise<GameData[T] | undefined> => {
-  const result = await db
-    .collection(collection)
-    .orderBy("addedAt", "desc")
-    .limit(1)
-    .get();
-  if (result.docs.length > 0) {
-    return {
-      ...result.docs[0].data(),
-      addedAt: result.docs[0].get("addedAt").toDate().toISOString(),
-    } as GameData[T];
+// cache latest data
+export const getLatestData = cache(
+  async <T extends keyof GameData>(
+    collection: T
+  ): Promise<GameData[T] | undefined> => {
+    const result = await db
+      .collection(collection)
+      .orderBy("addedAt", "desc")
+      .limit(1)
+      .get();
+    if (result.docs.length > 0) {
+      return {
+        ...result.docs[0].data(),
+        addedAt: result.docs[0].get("addedAt").toDate().toISOString(),
+      } as GameData[T];
+    }
   }
-};
+);

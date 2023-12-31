@@ -5,11 +5,14 @@ import NYTGameTitle from "../components/nyt-game-title";
 import NYTGameSubtitle from "../components/nyt-game-subtitle";
 import NYTButton from "../components/nyt-button";
 import { metadataForGamePage } from "@/lib/metadata";
+import { GAME_DATA_TTL } from "@/lib/constants";
 
 export const metadata: Metadata = metadataForGamePage(
   "Letter Boxed",
   "Get some help with today's NYT Letter Boxed."
 );
+
+export const revalidate = GAME_DATA_TTL;
 
 export default async function NYTLetterBoxedPage() {
   const data = await getLatestData("letter-boxed");
