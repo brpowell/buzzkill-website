@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import { Bars3Icon, EnvelopeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
 import { games } from "@/lib/games";
+import SidebarLink from "./sidebar-link";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,6 +76,7 @@ export default function Sidebar() {
             href="/"
             className="block pr-4 py-4 pl-2 text-2xl"
             tabIndex={isOpen ? 0 : -1}
+            onClick={() => setIsOpen(false)}
           >
             Buzzkill.tips
           </Link>
@@ -82,11 +84,10 @@ export default function Sidebar() {
           {/* Links or content goes here */}
           {games.map((game) => {
             return (
-              <Link
+              <SidebarLink
                 key={game.path}
                 href={game.path}
                 tabIndex={isOpen ? 0 : -1}
-                className="flex flex-row hover:bg-gray-700 p-4 items-center gap-3"
                 onClick={() => setIsOpen(false)}
               >
                 <Image
@@ -97,9 +98,14 @@ export default function Sidebar() {
                   height={28}
                 />
                 <div className="block text-white">{game.name}</div>
-              </Link>
+              </SidebarLink>
             );
           })}
+          <hr className="border-gray-700 mt-8 mb-3" />
+          <SidebarLink href="/contact" onClick={() => setIsOpen(false)}>
+            <EnvelopeIcon className="h-6 w-6 text-white" />
+            Contact
+          </SidebarLink>
         </nav>
       </div>
     </div>

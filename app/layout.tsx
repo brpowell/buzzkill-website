@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Disclaimer from "./components/disclaimer";
+import Sidebar from "./components/sidebar";
 
 const slabo = Slabo_27px({ weight: "400", subsets: ["latin"] });
 
@@ -20,7 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={slabo.className}>
-        <div className="flex justify-between flex-col">{children}</div>
+        <div className="flex justify-between flex-col">
+          <Sidebar />
+          {children}
+        </div>
         <Disclaimer />
       </body>
       <Analytics />
