@@ -50,10 +50,10 @@ export default function SpellingBee({ data }: SpellingBeeProps) {
       )}
       {markedWords.length > 0 && (
         <button
-          className="fixed transition-all right-6 bottom-6 bg-white bg-opacity-70 p-4 rounded-full"
+          className="fixed transition-all right-6 bottom-6 bg-white bg-opacity-70 p-3 rounded-full hover:bg-opacity-100 shadow-lg"
           onClick={onUndoClick}
         >
-          <ArrowUturnLeftIcon className="h-8 w-8" />
+          <ArrowUturnLeftIcon className="h-6 w-6" />
         </button>
       )}
     </div>
