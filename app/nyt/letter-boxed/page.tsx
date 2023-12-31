@@ -24,6 +24,7 @@ export default async function NYTLetterBoxedPage() {
       {data ? (
         <>
           <NYTGameSubtitle date={data.printDate} editor={data.editor} />
+          <NYTButton path="/puzzles/letter-boxed" />
           <div className="mt-10">
             <h3 className="text-lg font-bold mb-3">One solution is...</h3>
             {data.ourSolution.map((solution) => {
@@ -34,7 +35,6 @@ export default async function NYTLetterBoxedPage() {
       ) : (
         <div>{"Weird, we couldn't find any data. Check back later..."}</div>
       )}
-      <NYTButton path="/puzzles/letter-boxed" />
     </main>
   );
 }

@@ -27,6 +27,7 @@ export default async function NYTConnectionsPage() {
       {data ? (
         <>
           <NYTGameSubtitle date={data.addedAt} editor={data.editor} />
+          <NYTButton path="/games/connections" />
           <p className="my-8">
             {
               "Click a group to reveal the group name. Click again to reveal the words."
@@ -37,7 +38,6 @@ export default async function NYTConnectionsPage() {
       ) : (
         <div>{"Weird, we couldn't find any data. Check back later..."}</div>
       )}
-      <NYTButton path="/games/connections" />
     </main>
   );
 }

@@ -6,6 +6,7 @@ import NYTGameSubtitle from "../components/nyt-game-subtitle";
 import NYTGameTitle from "../components/nyt-game-title";
 import { metadataForGamePage } from "@/lib/metadata";
 import { GAME_DATA_TTL } from "@/lib/constants";
+import SpellingBee from "./components/spelling-bee";
 
 export const metadata: Metadata = metadataForGamePage(
   "Spelling Bee",
@@ -25,16 +26,11 @@ export default async function NYTSpellingBeePage() {
         <>
           <NYTGameSubtitle editor={data.editor} date={data.printDate} />
           <NYTButton path="/puzzles/spelling-bee" />
-          <ul className="flex flex-col w-full items-center">
-            {data.answers.sort().map((answer: string) => (
-              <li
-                key={answer}
-                className="w-full border-2 border-opacity-20 border-white mt-4 p-3 rounded-sm shadow-lg bg-opacity-50 text-lg max-w-72"
-              >
-                {answer}
-              </li>
-            ))}
-          </ul>
+          <p className="my-8 max-w-96">
+            Click on a word to mark it as found, and remove it from the list. If
+            you accidently remove a word, press the undo button at the bottom.
+          </p>
+          <SpellingBee data={data} />
         </>
       ) : (
         <div>{"Weird, we couldn't find any data. Check back later..."}</div>

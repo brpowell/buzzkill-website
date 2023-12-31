@@ -6,8 +6,10 @@ export default function Disclaimer() {
   let textColor = "text-slate-400";
 
   return (
-    <footer className="flex flex-col items-center text-center text-sm mt-20 mb-8">
-      <div className={`px-10 md:px-40 ${textColor} mix-blend-difference`}>
+    <footer className="flex flex-col items-center text-center text-sm mt-24 mb-8">
+      <div
+        className={`px-6 md:px-40 ${textColor} mix-blend-difference max-w-screen-lg`}
+      >
         The games and their respective icons featured herein are the exclusive
         property of{" "}
         <span>

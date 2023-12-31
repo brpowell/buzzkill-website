@@ -25,6 +25,7 @@ export default async function NYTWordlePage() {
       {data ? (
         <>
           <NYTGameSubtitle date={data.print_date} editor={data.editor} />
+          <NYTButton path="/games/wordle" />
           <p className="my-8">Tap a square to reveal a letter.</p>
           <div className="mb-10">
             <Wordle word={data.solution} />
@@ -33,7 +34,6 @@ export default async function NYTWordlePage() {
       ) : (
         <div>{"Weird, we couldn't find any data. Check back later..."}</div>
       )}
-      <NYTButton path="/games/wordle" />
     </main>
   );
 }
