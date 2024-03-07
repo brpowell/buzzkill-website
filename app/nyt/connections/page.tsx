@@ -1,4 +1,3 @@
-import { getLatestData } from "@/lib/nyt";
 import { Metadata } from "next";
 import DynamicBody from "../components/dynamic-body";
 import NYTGameTitle from "../components/nyt-game-title";
@@ -7,6 +6,7 @@ import Connections from "./components/connections";
 import NYTGameSubtitle from "../components/nyt-game-subtitle";
 import { metadataForGamePage } from "@/lib/metadata";
 import { GAME_DATA_TTL } from "@/lib/constants";
+import { getLatestDataCached } from "@/lib/get-collection";
 
 export const metadata: Metadata = metadataForGamePage(
   "Connections",
@@ -16,7 +16,7 @@ export const metadata: Metadata = metadataForGamePage(
 export const revalidate = GAME_DATA_TTL;
 
 export default async function NYTConnectionsPage() {
-  const data = await getLatestData("connections");
+  const data = await getLatestDataCached("connections");
 
   return (
     <main className="bg-[rgb(179,167,254)]">

@@ -1,17 +1,17 @@
-import { cache } from "react";
-import puppeteer, { ConnectOptions } from "puppeteer";
-import * as firebase from "firebase-admin";
-import { db } from "./firebase";
+import puppeteer from "puppeteer";
+import { getFirebase } from "./firebase";
 import { GameConfig, GameData, GameDataResponse } from "./types";
-import { getTodayEST, simpleDate } from "./date";
+import { getTodayEST } from "./date";
 
 export const getGameData = async <T extends keyof Omit<GameData, "wordle">>(
   config: GameConfig<T>
 ): Promise<GameData[T]> => {
   // get current date using EST
-  const dateString = simpleDate(getTodayEST());
+  const dateString = getTodayEST();
 
-  const dateDoc = db.doc(`${config.collection}/${dateString}`);
+  const dateDoc = getFirebase()
+    .firestore()
+    .doc(`${config.collection}/${dateString}`);
 
   // check cached response
   const data = await dateDoc.get();
@@ -33,10 +33,11 @@ export const getGameData = async <T extends keyof Omit<GameData, "wordle">>(
   const results = await page.evaluate(() => {
     return (window as any).gameData as GameDataResponse[T];
   });
+  await browser.close();
 
   const keyData = {
     ...(await config.parse(results, page)),
-    addedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    addedAt: getFirebase().firestore.FieldValue.serverTimestamp(),
   };
 
   // save answers to store
@@ -46,20 +47,19 @@ export const getGameData = async <T extends keyof Omit<GameData, "wordle">>(
 };
 
 // cache latest data
-export const getLatestData = cache(
-  async <T extends keyof GameData>(
-    collection: T
-  ): Promise<GameData[T] | undefined> => {
-    const result = await db
-      .collection(collection)
-      .orderBy("addedAt", "desc")
-      .limit(1)
-      .get();
-    if (result.docs.length > 0) {
-      return {
-        ...result.docs[0].data(),
-        addedAt: result.docs[0].get("addedAt").toDate().toISOString(),
-      } as GameData[T];
-    }
+export const getLatestData = async <T extends keyof GameData>(
+  collection: T
+): Promise<GameData[T] | undefined> => {
+  const result = await getFirebase()
+    .firestore()
+    .collection(collection)
+    .orderBy("addedAt", "desc")
+    .limit(1)
+    .get();
+  if (result.docs.length > 0) {
+    return {
+      ...result.docs[0].data(),
+      addedAt: result.docs[0].get("addedAt").toDate().toISOString(),
+    } as GameData[T];
   }
-);
+};

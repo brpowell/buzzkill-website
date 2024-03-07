@@ -50,12 +50,10 @@ interface RevealState {
 }
 
 export default function Connections({ data }: ConnectionsProps) {
-  const groups = Object.entries(data.groups).map(([name, stuff]) => {
-    return {
-      name,
-      members: stuff.members,
-    };
-  });
+  const groups = data.categories.map((category) => ({
+    name: category.title,
+    members: category.cards.map((card) => card.content),
+  }));
   const [revealState, setRevealState] = useState<RevealState>(
     groups.reduce((acc, group) => {
       acc[group.name] = {

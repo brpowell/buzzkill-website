@@ -1,12 +1,12 @@
 import { Metadata } from "next";
 import NYTButton from "../components/nyt-button";
-import { getLatestData } from "@/lib/nyt";
 import DynamicBody from "../components/dynamic-body";
 import NYTGameSubtitle from "../components/nyt-game-subtitle";
 import NYTGameTitle from "../components/nyt-game-title";
 import { metadataForGamePage } from "@/lib/metadata";
 import { GAME_DATA_TTL } from "@/lib/constants";
 import SpellingBee from "./components/spelling-bee";
+import { getLatestDataCached } from "@/lib/get-collection";
 
 export const metadata: Metadata = metadataForGamePage(
   "Spelling Bee",
@@ -16,7 +16,7 @@ export const metadata: Metadata = metadataForGamePage(
 export const revalidate = GAME_DATA_TTL;
 
 export default async function NYTSpellingBeePage() {
-  const data = await getLatestData("spelling-bee");
+  const data = await getLatestDataCached("spelling-bee");
 
   return (
     <main className="bg-[rgb(247,218,33)]">

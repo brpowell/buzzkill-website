@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
-import { games } from "@/lib/games";
+import { games } from "@/lib/constants";
 
 const description =
   "Discover solutions for New York Times games and puzzles. Get unstuck and enjoy your gameplay more!";

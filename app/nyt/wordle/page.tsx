@@ -1,4 +1,3 @@
-import { getLatestData } from "@/lib/nyt";
 import { Metadata } from "next";
 import DynamicBody from "../components/dynamic-body";
 import NYTButton from "../components/nyt-button";
@@ -7,6 +6,7 @@ import NYTGameTitle from "../components/nyt-game-title";
 import NYTGameSubtitle from "../components/nyt-game-subtitle";
 import { metadataForGamePage } from "@/lib/metadata";
 import { GAME_DATA_TTL } from "@/lib/constants";
+import { getLatestDataCached } from "@/lib/get-collection";
 
 export const metadata: Metadata = metadataForGamePage(
   "Wordle",
@@ -16,7 +16,7 @@ export const metadata: Metadata = metadataForGamePage(
 export const revalidate = GAME_DATA_TTL;
 
 export default async function NYTWordlePage() {
-  const data = await getLatestData("wordle");
+  const data = await getLatestDataCached("wordle");
 
   return (
     <main className="bg-[#e3e3e1]">

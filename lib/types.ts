@@ -1,4 +1,4 @@
-import { Page } from "puppeteer";
+// import { Page } from "puppeteer";
 
 interface BaseGameData {
   addedAt: string;
@@ -16,12 +16,19 @@ export interface SpellingBeeGameData {
 
 export interface ConnectionsGameData extends BaseGameData {
   id: number;
-  groups: {
-    [name: string]: {
-      level: number;
-      members: string[];
-    };
-  };
+  // groups: {
+  //   [name: string]: {
+  //     level: number;
+  //     members: string[];
+  //   };
+  // };
+  categories: Array<{
+    title: string;
+    cards: Array<{
+      content: string;
+      position: number;
+    }>;
+  }>;
   startingGroups: string[][];
   editor?: string;
 }
@@ -61,5 +68,5 @@ export interface GameData
 export interface GameConfig<T extends keyof GameData> {
   path: string;
   collection: T;
-  parse: (data: GameDataResponse[T], page: Page) => Promise<any> | any;
+  parse: (data: GameDataResponse[T], page: any) => Promise<any> | any;
 }

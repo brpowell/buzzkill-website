@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Bars3Icon, EnvelopeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
-import { games } from "@/lib/games";
+import { games } from "@/lib/constants";
 import SidebarLink from "./sidebar-link";
 
 export default function Sidebar() {

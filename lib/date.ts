@@ -1,13 +1,16 @@
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 export const simpleDate = (date: Date) => {
   return date.toISOString().split("T")[0];
 };
 
 export const getTodayEST = () => {
-  const todaysDate = new Date();
-  const estDate = new Date(
-    todaysDate.toLocaleString("en-US", { timeZone: "America/New_York" })
-  );
-  return todaysDate;
+  return dayjs().tz("America/New_York").format("YYYY-MM-DD");
 };
 
 export const longDateString = (date: string | Date) => {
