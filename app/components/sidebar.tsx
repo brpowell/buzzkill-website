@@ -70,7 +70,6 @@ export default function Sidebar() {
           isOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out justify-between flex flex-col p-2`}
       >
-        {/* Content for your sidebar */}
         <nav>
           <Link
             href="/"
@@ -78,10 +77,14 @@ export default function Sidebar() {
             tabIndex={isOpen ? 0 : -1}
             onClick={() => setIsOpen(false)}
           >
-            Buzzkill.tips
+            <Image
+              src={"/sidebar-logo.png"}
+              width={150}
+              height={112}
+              alt="buzzkill.tips - just tell me"
+            />
           </Link>
           <div className="text-md pl-2 pt-2">Games</div>
-          {/* Links or content goes here */}
           {games.map((game) => {
             return (
               <SidebarLink

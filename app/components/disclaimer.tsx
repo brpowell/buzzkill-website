@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { headers } from "next/headers";
 
 export default function Disclaimer() {
   let textColor = "text-slate-400";
@@ -19,11 +17,6 @@ export default function Disclaimer() {
         </span>{" "}
         Buzzkill.tips is an independent entity and is not affiliated with,
         endorsed by, or in any way officially connected to The New York Times.
-        Additional icons by{" "}
-        <Link href="https://icons8.com/" className="text-blue-600">
-          Icons8
-        </Link>
-        .
       </div>
     </footer>
   );
