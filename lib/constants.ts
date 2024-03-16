@@ -1,4 +1,4 @@
-export const GAME_DATA_TTL = 60 * 60 * 1; // 1 hour
+export const GAME_DATA_TTL = 3600; // 1 hour
 export const games = [
   {
     name: "Wordle",
