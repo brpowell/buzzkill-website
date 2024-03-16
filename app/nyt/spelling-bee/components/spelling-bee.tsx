@@ -38,7 +38,7 @@ export default function SpellingBee({ data }: SpellingBeeProps) {
               !markedWords.includes(word) && (
                 <li key={word} className={`w-full transition-all`}>
                   <button
-                    className="w-full border border-opacity-20 border-white mt-4 py-3 px-3 rounded shadow-lg bg-opacity-50 text-lg"
+                    className="w-full bg-white border-white mt-4 py-3 px-3 rounded shadow-sm bg-opacity-70 text-lg hover:bg-opacity-90 transition-all"
                     onClick={() => onWordClick(word)}
                   >
                     {word}
