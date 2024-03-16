@@ -22,6 +22,7 @@ export default function Home() {
       <div className="flex flex-col items-center pt-8 sm:p-18">
         <Image
           src={"/logo.webp"}
+          className="mb-10 px-10"
           width={450}
           height={337}
           alt="buzzkill.tips - just tell me"
